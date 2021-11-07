@@ -8,12 +8,14 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -30,7 +32,7 @@ import java.util.ArrayList;
 
 public class EncuestaActivity extends AppCompatActivity {
     private TextView tv1;
-    private EditText et1, et2, et3;
+    private EditText et1, et2, et3, et4;
     private Spinner sp1;
     private Switch sw1;
     private CheckBox chk1, chk2, chk3;
@@ -44,8 +46,9 @@ public class EncuestaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_encuesta);
         et1 = (EditText) findViewById(R.id.editTextTextPersonName);
-        et2 = (EditText) findViewById(R.id.editTextPhone);
-        et3 = (EditText) findViewById(R.id.editTextTextEmailAddress);
+        et2 = (EditText) findViewById(R.id.editTextDate);
+        et3 = (EditText) findViewById(R.id.editTextPhone);
+        et4 = (EditText) findViewById(R.id.editTextTextEmailAddress);
         sp1 = (Spinner) findViewById(R.id.spinner);
         sw1 = (Switch) findViewById(R.id.switch1);
         chk1 = (CheckBox) findViewById(R.id.checkBox);
@@ -97,12 +100,37 @@ public class EncuestaActivity extends AppCompatActivity {
                 mGetContent.launch(newIntent);
             }
         });
+
+        et2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (view.getId()) {
+                    case R.id.editTextDate:
+                        showDatePickerDialog();
+                        break;
+                }
+            }
+        });
+    }
+
+    private void showDatePickerDialog() {
+        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                // +1 because January is zero
+                final String selectedDate = day + "/" + (month+1) + "/" + year;
+                et2.setText(selectedDate);
+            }
+        });
+
+        newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
     public void obtenerDatos(View view) {
         String nom = "Nombre: " + et1.getText().toString();
-        String tel = "Teléfono: " + et2.getText().toString();
-        String email = "Email: " + et3.getText().toString();
+        String fnac = "Fecha de nacimiento: " + et2.getText().toString();
+        String tel = "Teléfono: " + et3.getText().toString();
+        String email = "Email: " + et4.getText().toString();
         String nivel = "Nivel: " + sp1.getSelectedItem().toString();
         String gusta_prog = "¿Te gusta programar?: ";
         if(sw1.isChecked()) {
@@ -135,7 +163,7 @@ public class EncuestaActivity extends AppCompatActivity {
         new AlertDialog.Builder(this, R.style.Theme_AppCompat_Dialog_Alert)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setTitle("Datos")
-                .setMessage(nom + "\n" + tel + "\n" + email + "\n" + nivel + "\n" +
+                .setMessage(nom + "\n" + fnac + "\n" + tel + "\n" + email + "\n" + nivel + "\n" +
                         gusta_prog + "\n" + leng + "\n" + tiempo_exp + "\n" + niv_sat + "\n" + tema)
                 .setPositiveButton("Aceptar", null).show();
     }

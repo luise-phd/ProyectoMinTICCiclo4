@@ -41,6 +41,15 @@
             android:inputType="textPersonName" />
 
         <EditText
+            android:id="@+id/editTextDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="Fecha de nacimiento"
+            android:inputType="date" />
+
+        <EditText
             android:id="@+id/editTextPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
