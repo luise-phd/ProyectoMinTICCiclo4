@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ProyectoMinTICCiclo4</string>
+    <string name="element_text">element_text</string>
+    <string-array name="lista_cargo">
+        <item>Vigilante</item>
+        <item>Subgerente</item>
+        <item>Gerente</item>
+        <item>Recursos Humanos</item>
+        <item>Bienestar</item>
+        <item>Servicios generales</item>
+    </string-array>
+</resources>
