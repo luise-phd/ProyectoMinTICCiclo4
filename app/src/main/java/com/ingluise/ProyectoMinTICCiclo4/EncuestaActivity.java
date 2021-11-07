@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -32,7 +34,7 @@ import java.util.ArrayList;
 
 public class EncuestaActivity extends AppCompatActivity {
     private TextView tv1;
-    private EditText et1, et2, et3, et4;
+    private EditText et1, et2, et3, et4, et5;
     private Spinner sp1;
     private Switch sw1;
     private CheckBox chk1, chk2, chk3;
@@ -49,6 +51,7 @@ public class EncuestaActivity extends AppCompatActivity {
         et2 = (EditText) findViewById(R.id.editTextDate);
         et3 = (EditText) findViewById(R.id.editTextPhone);
         et4 = (EditText) findViewById(R.id.editTextTextEmailAddress);
+        et5 = (EditText) findViewById(R.id.editTextTime);
         sp1 = (Spinner) findViewById(R.id.spinner);
         sw1 = (Switch) findViewById(R.id.switch1);
         chk1 = (CheckBox) findViewById(R.id.checkBox);
@@ -111,6 +114,17 @@ public class EncuestaActivity extends AppCompatActivity {
                 }
             }
         });
+
+        et5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (view.getId()) {
+                    case R.id.editTextTime:
+                        showTimePickerDialog();
+                        break;
+                }
+            }
+        });
     }
 
     private void showDatePickerDialog() {
@@ -124,6 +138,18 @@ public class EncuestaActivity extends AppCompatActivity {
         });
 
         newFragment.show(getSupportFragmentManager(), "datePicker");
+    }
+
+    private void showTimePickerDialog() {
+        TimePickerFragment newFragment = TimePickerFragment.newInstance(new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hour, int minutes) {
+                final String selectedTime = hour + ":" + minutes;
+                et5.setText(selectedTime);
+            }
+        });
+
+        newFragment.show(getSupportFragmentManager(), "timePicker");
     }
 
     public void obtenerDatos(View view) {
