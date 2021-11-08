@@ -11,14 +11,12 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -28,11 +26,9 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.ArrayList;
 
 public class EncuestaActivity extends AppCompatActivity {
+    private static final String TAG = EncuestaActivity.class.getSimpleName();
     private TextView tv1;
     private EditText et1, et2, et3, et4, et5;
     private Spinner sp1;
@@ -47,6 +43,21 @@ public class EncuestaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_encuesta);
+
+        if (savedInstanceState != null) {
+            Log.d(TAG, "onCreate() Restoring previous state");
+            /* restore state */
+        } else {
+            Log.d(TAG, "onCreate() No saved state available");
+            /* initialize app */
+        }
+        try {
+            double div = 45 / 0;
+        }
+        catch (ArithmeticException ae) {
+            Log.d(TAG, "Error numérico. División por cero", ae);
+        }
+
         et1 = (EditText) findViewById(R.id.editTextTextPersonName);
         et2 = (EditText) findViewById(R.id.editTextDate);
         et3 = (EditText) findViewById(R.id.editTextPhone);

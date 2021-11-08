@@ -78,6 +78,13 @@
                 android:text="TextView"
                 android:textColorLink="#F48FB1" />
 
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textAlignment="center" />
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

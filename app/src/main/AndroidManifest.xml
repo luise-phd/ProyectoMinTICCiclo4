@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoMinTICCiclo4">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".ListViewActivity"
             android:exported="false" />
         <activity
@@ -31,13 +34,13 @@
             android:name=".ConstraintLayoutActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".EncuestaActivity"
             android:exported="false" />
         <activity
             android:name=".SplashScreen"
             android:exported="false" />
         <activity
-            android:name=".EncuestaActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
