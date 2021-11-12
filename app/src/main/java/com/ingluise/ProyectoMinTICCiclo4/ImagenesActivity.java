@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -35,9 +36,7 @@ import java.util.Date;
 
 public class ImagenesActivity extends AppCompatActivity {
     private EditText t1;
-    private static final int ACTIVITY_START_CAMERA_APP = 0;
-    private static int SELECCIONAR_IMAGEN = 1;
-    private ImageView mPhotoCaptured;
+    private ImageView imgView;
     private String mImageFileLocation = "";
     private MyDBSQLiteOpenHelper admin;
     private SQLiteDatabase bd;
@@ -53,43 +52,39 @@ public class ImagenesActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         admin = new MyDBSQLiteOpenHelper(this, vars.bd, null, vars.ver);
-        mPhotoCaptured = (ImageView) findViewById(R.id.imageView);
-        t1 = (EditText) findViewById(R.id.editText2);
+        imgView = findViewById(R.id.imageView);
+        t1 = findViewById(R.id.editText2);
     }
 
-    public void takePhoto(View view) {
-        Intent callCameraApplicationIntent = new Intent();
-        callCameraApplicationIntent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-
-        File photoFile = null;
-        try {
-            photoFile = createImageFile();
-
-        } catch (IOException e) {
-            e.printStackTrace();
+    public void tomarFoto(View view) {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if(intent.resolveActivity(getPackageManager()) != null){
+            startActivityForResult(intent, 0);
         }
-        callCameraApplicationIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
-
-        startActivityForResult(callCameraApplicationIntent, ACTIVITY_START_CAMERA_APP);
     }
 
     public void deGaleria(View view) {
         Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        startActivityForResult(intent, SELECCIONAR_IMAGEN);
+        startActivityForResult(intent, 1);
     }
 
     public void quitarImg(View view) {
-        mPhotoCaptured.setImageDrawable(null);
+        imgView.setImageDrawable(null);
     }
 
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
-        if(requestCode == ACTIVITY_START_CAMERA_APP && resultCode == RESULT_OK) {
-            Toast.makeText(this, "Imagen capturada exitosamente", Toast.LENGTH_SHORT).show();
-            Bitmap photoCapturedBitmap = BitmapFactory.decodeFile(mImageFileLocation);
-            mPhotoCaptured.setImageBitmap(photoCapturedBitmap);
-            setReducedImageSize();
+        super.onActivityResult(requestCode, resultCode, data);
+
+        //De la camara
+        if(requestCode == 0 && resultCode == RESULT_OK) {
+            Toast.makeText(this, "Imagen capturada", Toast.LENGTH_SHORT).show();
+            Bundle extras = data.getExtras();
+            Bitmap imgBitmap = (Bitmap) extras.get("data");
+            imgView.setImageBitmap(imgBitmap);
         }
-        if(requestCode == SELECCIONAR_IMAGEN && resultCode == RESULT_OK) {
+
+        //De la galería
+        if(requestCode == 1 && resultCode == RESULT_OK) {
             Toast.makeText(this, "Imagen cargada de galería", Toast.LENGTH_SHORT).show();
             Uri selectedImage = data.getData();
             InputStream is;
@@ -99,39 +94,9 @@ public class ImagenesActivity extends AppCompatActivity {
 
                 Bitmap myBitmap  = BitmapFactory.decodeStream(bis);
 
-                mPhotoCaptured.setImageBitmap(myBitmap);
+                imgView.setImageBitmap(myBitmap);
             } catch (FileNotFoundException e) {}
         }
-    }
-
-    File createImageFile() throws IOException {
-
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "IMAGE_" + timeStamp + "_";
-        File storageDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-
-        File image = File.createTempFile(imageFileName,".jpg", storageDirectory);
-        mImageFileLocation = image.getAbsolutePath();
-
-        return image;
-    }
-
-    void setReducedImageSize() {
-        int targetImageViewWidth = mPhotoCaptured.getWidth();
-        int targetImageViewHeight = mPhotoCaptured.getHeight();
-
-        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-        bmOptions.inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(mImageFileLocation, bmOptions);
-        int cameraImageWidth = bmOptions.outWidth;
-        int cameraImageHeight = bmOptions.outHeight;
-
-        int scaleFactor = Math.min(cameraImageWidth/targetImageViewWidth, cameraImageHeight/targetImageViewHeight);
-        bmOptions.inSampleSize = scaleFactor;
-        bmOptions.inJustDecodeBounds = false;
-
-        Bitmap photoReducedSizeBitmp = BitmapFactory.decodeFile(mImageFileLocation, bmOptions);
-        mPhotoCaptured.setImageBitmap(photoReducedSizeBitmp);
     }
 
     @Override
@@ -145,19 +110,17 @@ public class ImagenesActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.guardar) {
             if (!t1.getText().toString().equals("")) {
                 String imgCodificada = "";
-                mPhotoCaptured.buildDrawingCache(true);
-                bitmap = mPhotoCaptured.getDrawingCache(true);
+                imgView.buildDrawingCache(true);
+                bitmap = imgView.getDrawingCache(true);
                 String prueba = "";
                 if (bitmap != null) {
-                    if(mPhotoCaptured.getWidth() < mPhotoCaptured.getHeight()) {
-                        bitmap2 = Bitmap.createScaledBitmap(bitmap, mPhotoCaptured.getWidth(), mPhotoCaptured.getHeight(), true);
-                    }
-                    else {
-                        bitmap2 = Bitmap.createScaledBitmap(bitmap, mPhotoCaptured.getWidth(), mPhotoCaptured.getHeight(), true);
+                    if(imgView.getWidth() < imgView.getHeight()) {
+                        bitmap2 = Bitmap.createScaledBitmap(bitmap, imgView.getWidth(), imgView.getHeight(), true);
+                    } else {
+                        bitmap2 = Bitmap.createScaledBitmap(bitmap, imgView.getWidth(), imgView.getHeight(), true);
                     }
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     bitmap2.compress(Bitmap.CompressFormat.JPEG, 25, baos);
@@ -169,7 +132,7 @@ public class ImagenesActivity extends AppCompatActivity {
                 registro = new ContentValues();
                 registro.put("descripcion", t1.getText().toString());
                 registro.put("img", imgCodificada);
-                long reg = bd.insert("ciudad", null, registro);
+                long reg = bd.insert("imagenes", null, registro);
                 if (reg == -1) {
                     Toast.makeText(this, "Error. No se pudo agregar", Toast.LENGTH_SHORT).show();
                 } else {
@@ -178,11 +141,10 @@ public class ImagenesActivity extends AppCompatActivity {
                 bd.close();
 
                 t1.setText("");
-                mPhotoCaptured.setImageBitmap(null);
-                mPhotoCaptured.destroyDrawingCache();
-                mPhotoCaptured.setImageDrawable(null);
-            }
-            else {
+                imgView.setImageBitmap(null);
+                imgView.destroyDrawingCache();
+                imgView.setImageDrawable(null);
+            } else {
                 Toast.makeText(this, "Ingrese la descripción", Toast.LENGTH_LONG).show();
             }
 
@@ -197,54 +159,43 @@ public class ImagenesActivity extends AppCompatActivity {
             // set inputdialog.xml to alertdialog builder
             alertDialogBuilder.setView(promptsView);
 
-            final EditText userInput = (EditText) promptsView.findViewById(R.id.editText3);
+            final EditText userInput = promptsView.findViewById(R.id.editText3);
 
-            //set dialog message
             alertDialogBuilder
                     .setCancelable(false)
-                    .setPositiveButton("OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog,int id) {
-                                    // get user input and set it to result edit text
-                                    // t2.setText(userInput.getText());
-                                    Bitmap decodedByte = null;
-                                    byte[] decodeString;
-                                    bd = admin.getWritableDatabase();
-                                    fila = bd.rawQuery("SELECT * FROM ciudad WHERE idciu='"+ userInput.getText() +"'", null);
-                                    String datos = "", _id = "", des = "";
-                                    if(fila.moveToFirst()) {
-                                        datos = fila.getInt(0) + "--" + fila.getString(1) + "\n";
-                                        _id = fila.getString(0);
-                                        des = fila.getString(1);
-                                        if(!fila.getString(2).equals("")) {
-                                            decodeString = Base64.decode(fila.getString(2), Base64.DEFAULT);
-                                            decodedByte = BitmapFactory.decodeByteArray(decodeString, 0, decodeString.length);
-                                        }
-                                        t1.setText(des);
-                                        mPhotoCaptured.setImageBitmap(decodedByte);
-                                        Toast.makeText(getApplicationContext(), datos, Toast.LENGTH_LONG).show();
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Bitmap decodedByte = null;
+                                byte[] decodeString;
+                                bd = admin.getWritableDatabase();
+                                fila = bd.rawQuery("SELECT * FROM imagenes WHERE descripcion='"+ userInput.getText() +"'", null);
+                                String des = "";
+                                if(fila.moveToFirst()) {
+                                    des = fila.getString(1);
+                                    if(!fila.getString(2).equals("")) {
+                                        decodeString = Base64.decode(fila.getString(2), Base64.DEFAULT);
+                                        decodedByte = BitmapFactory.decodeByteArray(decodeString, 0, decodeString.length);
                                     }
-                                    else {
-                                        Toast.makeText(getApplicationContext(), "El registro no existe", Toast.LENGTH_LONG).show();
-                                    }
-                                    bd.close();
+                                    t1.setText(des);
+                                    imgView.setImageBitmap(decodedByte);
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "El registro no existe", Toast.LENGTH_LONG).show();
                                 }
-                            })
+                                bd.close();
+                            }
+                        })
                     .setNegativeButton("Cancelar",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog,int id) {
-                                    t1.setText("");
-                                    mPhotoCaptured.setImageBitmap(null);
-                                    mPhotoCaptured.destroyDrawingCache();
-                                    mPhotoCaptured.setImageDrawable(null);
-                                    dialog.cancel();
-                                }
-                            });
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                t1.setText("");
+                                imgView.setImageBitmap(null);
+                                imgView.destroyDrawingCache();
+                                imgView.setImageDrawable(null);
+                                dialog.cancel();
+                            }
+                        });
 
-            // create alert dialog
             AlertDialog alertDialog = alertDialogBuilder.create();
-
-            // show it
             alertDialog.show();
 
             return true;
