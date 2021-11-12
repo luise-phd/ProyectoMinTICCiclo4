@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ingluise.ProyectoMinTICCiclo4">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,10 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoMinTICCiclo4">
         <activity
+            android:name=".ListViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProductoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".ListViewActivity"
+            android:name=".CategoriaActivity"
             android:exported="false" />
         <activity
             android:name=".WebViewActivity"
@@ -40,7 +50,7 @@
             android:name=".SplashScreen"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ImagenesActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

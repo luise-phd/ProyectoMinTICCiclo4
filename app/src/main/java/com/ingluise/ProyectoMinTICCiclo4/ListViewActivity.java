@@ -54,14 +54,22 @@ public class ListViewActivity extends AppCompatActivity {
         lv1.setAdapter(adapter);
         lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
 //                Toast.makeText(getApplicationContext(), ""+lv1.getItemAtPosition(i).toString(), Toast.LENGTH_SHORT).show();
                 //Retornar datos a la actividad que la invocó
                 Intent output = new Intent();
-                output.putExtra("tema", lv1.getItemAtPosition(i).toString());
-                output.putExtra("pos", ""+lv1.getItemIdAtPosition(i));
+                output.putExtra("tema", lv1.getItemAtPosition(pos).toString());
+                output.putExtra("pos", ""+lv1.getItemIdAtPosition(pos));
                 setResult(RESULT_OK, output);
                 finish();
+            }
+        });
+        lv1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                adapter.remove(lv1.getItemAtPosition(pos).toString());
+                adapter.notifyDataSetChanged();
+                return false;
             }
         });
     }
