@@ -20,7 +20,7 @@
             android:name=".ListViewActivity"
             android:exported="false" />
         <activity
-            android:name=".ProductoActivity"
+            android:name=".ImagenesActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
@@ -29,7 +29,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".CategoriaActivity"
+            android:name=".CategoriaFirebaseActivity"
             android:exported="false" />
         <activity
             android:name=".WebViewActivity"
@@ -53,7 +53,7 @@
             android:name=".SplashScreen"
             android:exported="false" />
         <activity
-            android:name=".ImagenesActivity"
+            android:name=".ProductoFirebaseActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

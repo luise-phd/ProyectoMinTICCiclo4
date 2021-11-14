@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".CategoriaFirebaseActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Categoría">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_categoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:backgroundTint="#00FFFFFF"
+            android:inputType="textCapSentences" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:onClick="guardarDatos"
+            android:text="Guardar"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:onClick="recuperarDatos"
+            android:text="Recuperar"
+            android:textAllCaps="false" />
+    </TableRow>
+
+</LinearLayout>
