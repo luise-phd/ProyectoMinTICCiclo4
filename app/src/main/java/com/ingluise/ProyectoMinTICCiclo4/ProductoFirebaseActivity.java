@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -21,6 +22,7 @@ public class ProductoFirebaseActivity extends AppCompatActivity {
     private DatabaseReference myRef;
     private Producto producto;
     private TextInputEditText t1, t2;
+    private ProgressBar pb;
 
     String productos;
 
@@ -31,6 +33,7 @@ public class ProductoFirebaseActivity extends AppCompatActivity {
 
         t1 = findViewById(R.id.input_nombre);
         t2 = findViewById(R.id.input_precio);
+        pb = findViewById(R.id.progressBar2);
     }
 
     public void guardarDatos(View view) {
@@ -83,6 +86,7 @@ public class ProductoFirebaseActivity extends AppCompatActivity {
             myRef.child("producto").orderByChild("nombre").equalTo(nom).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
+                    pb.setVisibility(View.VISIBLE);
                     if (dataSnapshot.getChildrenCount() > 0) {
                         for (DataSnapshot snapShot : dataSnapshot.getChildren()) {
                             Producto producto = snapShot.getValue(Producto.class);
@@ -91,6 +95,8 @@ public class ProductoFirebaseActivity extends AppCompatActivity {
                             t1.setText(nombre);
                             t2.setText("" + precio);
                         }
+                        if (!t1.getText().toString().equals("") && !t2.getText().toString().equals(""))
+                            pb.setVisibility(View.INVISIBLE);
                     } else
                         Toast.makeText(getApplicationContext(), "El producto no existe", Toast.LENGTH_SHORT).show();
                 }

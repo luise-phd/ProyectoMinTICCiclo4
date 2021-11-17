@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ingluise.ProyectoMinTICCiclo4">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,13 +15,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoMinTICCiclo4">
         <activity
-            android:name=".CamaraActivity"
+            android:name=".ImagenesDBActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EncuestaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LocationActivity"
             android:exported="false" />
         <activity
             android:name=".ListViewActivity"
             android:exported="false" />
         <activity
-            android:name=".ImagenesActivity"
+            android:name=".CamaraActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
@@ -47,7 +54,7 @@
             android:name=".ConstraintLayoutActivity"
             android:exported="false" />
         <activity
-            android:name=".EncuestaActivity"
+            android:name=".APIRestActivity"
             android:exported="false" />
         <activity
             android:name=".SplashScreen"

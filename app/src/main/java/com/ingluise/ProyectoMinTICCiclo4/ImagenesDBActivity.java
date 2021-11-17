@@ -13,7 +13,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.LayoutInflater;
@@ -21,20 +20,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-public class ImagenesActivity extends AppCompatActivity {
+public class ImagenesDBActivity extends AppCompatActivity {
     private EditText t1;
     private ImageView imgView;
     private String mImageFileLocation = "";
@@ -47,7 +41,7 @@ public class ImagenesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_imagenes);
+        setContentView(R.layout.activity_imagenes_db);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
@@ -102,7 +96,7 @@ public class ImagenesActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_imagenes, menu);
+        getMenuInflater().inflate(R.menu.menu_imagenes_db, menu);
         return true;
     }
 
@@ -115,18 +109,13 @@ public class ImagenesActivity extends AppCompatActivity {
                 String imgCodificada = "";
                 imgView.buildDrawingCache(true);
                 bitmap = imgView.getDrawingCache(true);
-                String prueba = "";
-                if (bitmap != null) {
-                    if(imgView.getWidth() < imgView.getHeight()) {
-                        bitmap2 = Bitmap.createScaledBitmap(bitmap, imgView.getWidth(), imgView.getHeight(), true);
-                    } else {
-                        bitmap2 = Bitmap.createScaledBitmap(bitmap, imgView.getWidth(), imgView.getHeight(), true);
-                    }
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    bitmap2.compress(Bitmap.CompressFormat.JPEG, 25, baos);
-                    byte[] imagen = baos.toByteArray();
-                    imgCodificada = Base64.encodeToString(imagen, Base64.DEFAULT);
-                }
+
+                bitmap2 = Bitmap.createScaledBitmap(bitmap, imgView.getWidth(), imgView.getHeight(), true);
+
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap2.compress(Bitmap.CompressFormat.JPEG, 25, baos);
+                byte[] imagen = baos.toByteArray();
+                imgCodificada = Base64.encodeToString(imagen, Base64.DEFAULT);
 
                 bd = admin.getWritableDatabase();
                 registro = new ContentValues();
@@ -134,7 +123,7 @@ public class ImagenesActivity extends AppCompatActivity {
                 registro.put("img", imgCodificada);
                 long reg = bd.insert("imagenes", null, registro);
                 if (reg == -1) {
-                    Toast.makeText(this, "Error. No se pudo agregar", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "No se pudo agregar el registro", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(this, "Registro agregado", Toast.LENGTH_SHORT).show();
                 }
@@ -155,8 +144,6 @@ public class ImagenesActivity extends AppCompatActivity {
             LayoutInflater li = LayoutInflater.from(this);
             View promptsView = li.inflate(R.layout.inputdialog, null);
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-
-            // set inputdialog.xml to alertdialog builder
             alertDialogBuilder.setView(promptsView);
 
             final EditText userInput = promptsView.findViewById(R.id.editText3);

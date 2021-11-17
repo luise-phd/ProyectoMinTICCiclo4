@@ -11,12 +11,15 @@
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout-w1240dp/activity_login2.xml" value="0.12349397590361445" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout-w1240dp/activity_splashscreen.xml" value="0.12349397590361445" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout-w936dp/activity_login2.xml" value="0.144140625" />
+        <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_apirest.xml" value="0.18206521739130435" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_camara.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_categoria.xml" value="0.22" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_categoria_firebase.xml" value="0.1" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_encuesta.xml" value="0.18" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_imagenes.xml" value="0.17753623188405798" />
+        <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_imagenes_db.xml" value="0.17572463768115942" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_list_view.xml" value="0.15" />
+        <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_location.xml" value="0.25" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_login2.xml" value="0.1921875" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_main.xml" value="0.1480978260869565" />
@@ -29,6 +32,7 @@
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/item_text_view.xml" value="0.13405797101449277" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/menu/main_menu.xml" value="0.1921875" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/menu/menu_imagenes.xml" value="0.1921875" />
+        <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/menu/menu_imagenes_db.xml" value="0.1921875" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoPruebas/app/src/main/res/layout/activity_main.xml" value="0.25" />
       </map>
     </option>
