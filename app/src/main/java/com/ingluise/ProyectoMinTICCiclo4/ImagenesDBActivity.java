@@ -47,6 +47,7 @@ public class ImagenesDBActivity extends AppCompatActivity {
 
         admin = new MyDBSQLiteOpenHelper(this, vars.bd, null, vars.ver);
         imgView = findViewById(R.id.imageView);
+        imgView.setImageDrawable(null);
         t1 = findViewById(R.id.editText2);
     }
 
@@ -107,35 +108,36 @@ public class ImagenesDBActivity extends AppCompatActivity {
         if (id == R.id.guardar) {
             if (!t1.getText().toString().equals("")) {
                 String imgCodificada = "";
-                imgView.buildDrawingCache(true);
-                bitmap = imgView.getDrawingCache(true);
+                if (imgView.getDrawable() != null) {
+                    imgView.buildDrawingCache(true);
+                    bitmap = imgView.getDrawingCache(true);
+                    bitmap2 = Bitmap.createScaledBitmap(bitmap, imgView.getWidth(), imgView.getHeight(), true);
 
-                bitmap2 = Bitmap.createScaledBitmap(bitmap, imgView.getWidth(), imgView.getHeight(), true);
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    bitmap2.compress(Bitmap.CompressFormat.JPEG, 25, baos);
+                    byte[] imagen = baos.toByteArray();
+                    imgCodificada = Base64.encodeToString(imagen, Base64.DEFAULT);
 
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap2.compress(Bitmap.CompressFormat.JPEG, 25, baos);
-                byte[] imagen = baos.toByteArray();
-                imgCodificada = Base64.encodeToString(imagen, Base64.DEFAULT);
+                    bd = admin.getWritableDatabase();
+                    registro = new ContentValues();
+                    registro.put("descripcion", t1.getText().toString());
+                    registro.put("img", imgCodificada);
+                    long reg = bd.insert("imagenes", null, registro);
+                    if (reg == -1) {
+                        Toast.makeText(this, "No se pudo agregar el registro", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this, "Registro agregado", Toast.LENGTH_SHORT).show();
+                    }
+                    bd.close();
 
-                bd = admin.getWritableDatabase();
-                registro = new ContentValues();
-                registro.put("descripcion", t1.getText().toString());
-                registro.put("img", imgCodificada);
-                long reg = bd.insert("imagenes", null, registro);
-                if (reg == -1) {
-                    Toast.makeText(this, "No se pudo agregar el registro", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(this, "Registro agregado", Toast.LENGTH_SHORT).show();
-                }
-                bd.close();
-
-                t1.setText("");
-                imgView.setImageBitmap(null);
-                imgView.destroyDrawingCache();
-                imgView.setImageDrawable(null);
-            } else {
+                    t1.setText("");
+                    imgView.setImageBitmap(null);
+                    imgView.destroyDrawingCache();
+                    imgView.setImageDrawable(null);
+                } else
+                    Toast.makeText(this, "Por favor, tome la fotografía", Toast.LENGTH_LONG).show();
+            } else
                 Toast.makeText(this, "Ingrese la descripción", Toast.LENGTH_LONG).show();
-            }
 
             return true;
         }

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ingluise.ProyectoMinTICCiclo4">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -16,6 +16,9 @@
         android:theme="@style/Theme.ProyectoMinTICCiclo4">
         <activity
             android:name=".ImagenesDBActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProductoFirebaseActivity"
             android:exported="false" />
         <activity
             android:name=".EncuestaActivity"
@@ -60,7 +63,7 @@
             android:name=".SplashScreen"
             android:exported="false" />
         <activity
-            android:name=".ProductoFirebaseActivity"
+            android:name=".RecyclerViewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

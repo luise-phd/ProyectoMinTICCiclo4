@@ -4,6 +4,9 @@
     <string name="latitude_label">Latitud</string>
     <string name="longitude_label">Longitud</string>
     <string name="activity_label">Actividad</string>
+    <string name="linear_layout_manager">Linear Layout Manager</string>
+    <string name="grid_layout_manager">Grid Layout Manager</string>
+    <string name="sample_show_log">Sample Show Log</string>
     <string-array name="lista_cargo">
         <item>Vigilante</item>
         <item>Subgerente</item>

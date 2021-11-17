@@ -22,7 +22,8 @@
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_location.xml" value="0.25" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_login2.xml" value="0.1921875" />
-        <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_main.xml" value="0.1480978260869565" />
+        <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_main_log.xml" value="0.1911231884057971" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_producto.xml" value="0.1" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_producto_firebase.xml" value="0.22" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_recycler_view.xml" value="0.1" />
@@ -30,6 +31,9 @@
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_web_view.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/inputdialog.xml" value="0.17753623188405798" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/item_text_view.xml" value="0.13405797101449277" />
+        <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/recycler_view_frag.xml" value="0.25" />
+        <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/text_row_item.xml" value="0.25" />
+        <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/menu/main.xml" value="0.1921875" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/menu/main_menu.xml" value="0.1921875" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/menu/menu_imagenes.xml" value="0.1921875" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/menu/menu_imagenes_db.xml" value="0.1921875" />
