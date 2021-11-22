@@ -12,6 +12,7 @@
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout-w1240dp/activity_splashscreen.xml" value="0.12349397590361445" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout-w936dp/activity_login2.xml" value="0.144140625" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_apirest.xml" value="0.18206521739130435" />
+        <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_autenticacion_firebase.xml" value="0.33" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_camara.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_categoria.xml" value="0.22" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_categoria_firebase.xml" value="0.1" />
@@ -26,7 +27,7 @@
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_main_log.xml" value="0.1911231884057971" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_producto.xml" value="0.1" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_producto_firebase.xml" value="0.22" />
-        <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_recycler_view.xml" value="0.1" />
+        <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_recycler_view.xml" value="0.18" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_splashscreen.xml" value="0.1358695652173913" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/activity_web_view.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/Home/AndroidStudioProjects/ProyectoMinTICCiclo4/app/src/main/res/layout/inputdialog.xml" value="0.17753623188405798" />

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -34,6 +35,10 @@ public class ProductoFirebaseActivity extends AppCompatActivity {
         t1 = findViewById(R.id.input_nombre);
         t2 = findViewById(R.id.input_precio);
         pb = findViewById(R.id.progressBar2);
+    }
+
+    public void testCrash(View view) {
+        throw new RuntimeException("Test Crash"); // Force a crash
     }
 
     public void guardarDatos(View view) {

@@ -15,16 +15,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoMinTICCiclo4">
         <activity
-            android:name=".ImagenesDBActivity"
+            android:name=".ProductoFirebaseActivity"
             android:exported="false" />
         <activity
-            android:name=".ProductoFirebaseActivity"
+            android:name=".AutenticacionFirebaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ImagenesDBActivity"
             android:exported="false" />
         <activity
             android:name=".EncuestaActivity"
             android:exported="false" />
         <activity
-            android:name=".LocationActivity"
+            android:name=".RecyclerViewActivity"
             android:exported="false" />
         <activity
             android:name=".ListViewActivity"
@@ -63,7 +66,7 @@
             android:name=".SplashScreen"
             android:exported="false" />
         <activity
-            android:name=".RecyclerViewActivity"
+            android:name=".LocationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

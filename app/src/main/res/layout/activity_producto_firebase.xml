@@ -84,8 +84,16 @@
             android:id="@+id/button9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:onClick="editarDatos"
             android:text="Editar" />
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="testCrash"
+            android:text="Test Crash" />
     </TableRow>
 
     <ProgressBar

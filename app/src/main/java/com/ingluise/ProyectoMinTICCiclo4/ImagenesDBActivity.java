@@ -86,9 +86,7 @@ public class ImagenesDBActivity extends AppCompatActivity {
             try {
                 is = getContentResolver().openInputStream(selectedImage);
                 BufferedInputStream bis = new BufferedInputStream(is);
-
                 Bitmap myBitmap  = BitmapFactory.decodeStream(bis);
-
                 imgView.setImageBitmap(myBitmap);
             } catch (FileNotFoundException e) {}
         }
@@ -114,7 +112,7 @@ public class ImagenesDBActivity extends AppCompatActivity {
                     bitmap2 = Bitmap.createScaledBitmap(bitmap, imgView.getWidth(), imgView.getHeight(), true);
 
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    bitmap2.compress(Bitmap.CompressFormat.JPEG, 25, baos);
+                    bitmap2.compress(Bitmap.CompressFormat.PNG, 25, baos);
                     byte[] imagen = baos.toByteArray();
                     imgCodificada = Base64.encodeToString(imagen, Base64.DEFAULT);
 
@@ -156,7 +154,7 @@ public class ImagenesDBActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
                                 Bitmap decodedByte = null;
                                 byte[] decodeString;
-                                bd = admin.getWritableDatabase();
+                                bd = admin.getReadableDatabase();
                                 fila = bd.rawQuery("SELECT * FROM imagenes WHERE descripcion='"+ userInput.getText() +"'", null);
                                 String des = "";
                                 if(fila.moveToFirst()) {

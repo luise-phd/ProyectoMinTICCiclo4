@@ -1,27 +1,18 @@
 {
   "project_info": {
     "project_number": "293381383861",
-    "firebase_url": "https://proyectominticciclo4-default-rtdb.firebaseio.com",
     "project_id": "proyectominticciclo4",
     "storage_bucket": "proyectominticciclo4.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:293381383861:android:1347a8b1f5de337c0d00fc",
+        "mobilesdk_app_id": "1:293381383861:android:aabd50976da9d8520d00fc",
         "android_client_info": {
-          "package_name": "com.ingluise.ProyectoMinTICCiclo4"
+          "package_name": "com.ingluise.proyectominticciclo4"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "293381383861-q9r40psdvp843v1nigh0fgb9d0toc6d7.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.ingluise.ProyectoMinTICCiclo4",
-            "certificate_hash": "bcec733c7906db4d3fa037298e498dd04500bd4b"
-          }
-        },
         {
           "client_id": "293381383861-ict87objmkckssvqj7uem4s3rndb0qff.apps.googleusercontent.com",
           "client_type": 3

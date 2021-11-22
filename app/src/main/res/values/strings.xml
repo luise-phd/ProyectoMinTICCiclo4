@@ -7,6 +7,7 @@
     <string name="linear_layout_manager">Linear Layout Manager</string>
     <string name="grid_layout_manager">Grid Layout Manager</string>
     <string name="sample_show_log">Sample Show Log</string>
+
     <string-array name="lista_cargo">
         <item>Vigilante</item>
         <item>Subgerente</item>
