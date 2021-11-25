@@ -33,12 +33,22 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     private String[] mDataSet;
 
+    /**
+     * Initialize the dataset of the Adapter.
+     *
+     * @param dataSet String[] containing the data to populate views to be used by RecyclerView.
+     */
+    public CustomAdapter(String[] dataSet) {
+        mDataSet = dataSet;
+    }
+
+
     // Create new views (invoked by the layout manager)
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view.
         View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.text_row_item, viewGroup, false);
+                .inflate(R.layout.image_text_row_item, viewGroup, false);
 
         return new ViewHolder(v);
     }
@@ -57,15 +67,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     @Override
     public int getItemCount() {
         return mDataSet.length;
-    }
-
-    /**
-     * Initialize the dataset of the Adapter.
-     *
-     * @param dataSet String[] containing the data to populate views to be used by RecyclerView.
-     */
-    public CustomAdapter(String[] dataSet) {
-        mDataSet = dataSet;
     }
 
     /**
