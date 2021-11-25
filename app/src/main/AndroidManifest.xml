@@ -3,7 +3,7 @@
     package="com.ingluise.ProyectoMinTICCiclo4">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<!--    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -21,7 +21,7 @@
             android:name=".AutenticacionFirebaseActivity"
             android:exported="false" />
         <activity
-            android:name=".ImagenesDBActivity"
+            android:name=".LocationActivity"
             android:exported="false" />
         <activity
             android:name=".EncuestaActivity"
@@ -66,7 +66,7 @@
             android:name=".SplashScreen"
             android:exported="false" />
         <activity
-            android:name=".LocationActivity"
+            android:name=".ImagenesDBActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
