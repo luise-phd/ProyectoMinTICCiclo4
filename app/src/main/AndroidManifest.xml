@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ingluise.ProyectoMinTICCiclo4">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -17,10 +17,10 @@
             android:name=".ImagenesDBActivity"
             android:exported="false" />
         <activity
-            android:name=".ProductoFirebaseActivity"
+            android:name=".AutenticacionFirebaseActivity"
             android:exported="false" />
         <activity
-            android:name=".AutenticacionFirebaseActivity"
+            android:name=".RecyclerViewBasicActivity"
             android:exported="false" />
         <activity
             android:name=".LocationActivity"
@@ -68,7 +68,7 @@
             android:name=".SplashScreen"
             android:exported="false" />
         <activity
-            android:name=".RecyclerViewBasicActivity"
+            android:name=".ProductoFirebaseActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
