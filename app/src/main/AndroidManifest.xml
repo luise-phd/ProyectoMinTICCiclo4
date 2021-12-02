@@ -17,7 +17,7 @@
             android:name=".ImagenesDBActivity"
             android:exported="false" />
         <activity
-            android:name=".AutenticacionFirebaseActivity"
+            android:name=".ProductoFirebaseActivity"
             android:exported="false" />
         <activity
             android:name=".RecyclerViewBasicActivity"
@@ -68,7 +68,7 @@
             android:name=".SplashScreen"
             android:exported="false" />
         <activity
-            android:name=".ProductoFirebaseActivity"
+            android:name=".AutenticacionFirebaseActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

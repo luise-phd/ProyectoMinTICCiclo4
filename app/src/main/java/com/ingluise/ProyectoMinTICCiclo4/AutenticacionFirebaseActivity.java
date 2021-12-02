@@ -38,11 +38,10 @@ public class AutenticacionFirebaseActivity extends AppCompatActivity {
 
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestIdToken("1061694351492-a8i63hbkm0qi57ij05134p45idm50s33.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
 
-        Log.i("pruebas", getString(R.string.default_web_client_id));
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         mAuth = FirebaseAuth.getInstance();
@@ -54,6 +53,11 @@ public class AutenticacionFirebaseActivity extends AppCompatActivity {
     public void signIn(View view) {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    public void signOut(View view) {
+        FirebaseAuth.getInstance().signOut();
+        updateUI(null);
     }
 
     public void onStart() {
@@ -103,8 +107,12 @@ public class AutenticacionFirebaseActivity extends AppCompatActivity {
     }
 
     private void updateUI(FirebaseUser user) {
-//        tv1.setText(user.getDisplayName());
-//        tv2.setText(user.getEmail());
-        Log.i(TAG, "Hola");
+        if (user != null) {
+            tv1.setText(user.getDisplayName());
+            tv2.setText(user.getEmail());
+        } else {
+            tv1.setText("Desconectado");
+            tv2.setText("Desconectado");
+        }
     }
 }

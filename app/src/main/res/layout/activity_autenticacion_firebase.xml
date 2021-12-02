@@ -8,15 +8,30 @@
     android:orientation="vertical"
     tools:context=".AutenticacionFirebaseActivity">
 
-    <Button
-        android:id="@+id/button11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#673AB7"
-        android:drawableLeft="@drawable/common_google_signin_btn_icon_light_focused"
-        android:onClick="signIn"
-        android:text="Iniciar sesión"
-        android:textAllCaps="false" />
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="#673AB7"
+            android:drawableLeft="@drawable/common_google_signin_btn_icon_light_focused"
+            android:onClick="signIn"
+            android:text="Iniciar sesión"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/button12"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:backgroundTint="#673AB7"
+            android:onClick="signOut"
+            android:text="Desconectar"
+            android:textAllCaps="false" />
+    </TableRow>
 
     <TextView
         android:id="@+id/textView15"
